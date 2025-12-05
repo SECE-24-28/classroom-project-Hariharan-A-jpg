@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Movie Ticket Booking</title>
+<script>
+function validateMovieForm() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let movie = document.getElementById("movie").value;
+    let tickets = document.getElementById("tickets").value;
+    let date = document.getElementById("date").value;
+    let phone = document.getElementById("phone").value;
+
+   
+    if (name === "" || email === "" || movie === "" || tickets === "" || date === "") {
+        alert("All fields are required!");
+        return false;
+    }
+
+   
+    if (name.length < 3) {
+        alert("Name must be at least 3 characters.");
+        return false;
+    }
+
+    let emailPattern = /\S+@\S+\.\S+/;
+    if (!emailPattern.test(email)) {
+        alert("Enter a valid email.");
+        return false;
+    }
+
+    
+    if (isNaN(tickets) || tickets <= 0) {
+        alert("Enter a valid number of tickets.");
+        return false;
+    }
+
+    if (phone.length != 10 || isNaN(phone)) {
+        alert("Phone number must be exactly 10 digits.");
+        return false;
+    }
+
+    alert("Movie Ticket Booked Successfully!");
+    return true;
+}
+</script>
+</head>
+<body>
+<h2>Movie Ticket Booking Form</h2>
+
+<form onsubmit="return validateMovieForm()">
+    Name: <input type="text" id="name"><br><br>
+    Email: <input type="text" id="email"><br><br>
+    Phone: <input type="text" id="phone"><br><br>
+    Movie Name: <input type="text" id="movie"><br><br>
+    Number of Tickets: <input type="text" id="tickets"><br><br>
+    Date: <input type="date" id="date"><br><br>
+    Seat Type:
+    <select id="seat">
+        <option>Normal</option>
+        <option>Premium</option>
+        <option>VIP</option>
+    </select><br><br>
+    Time Slot:
+    <select id="time">
+        <option>10:00 AM</option>
+        <option>2:00 PM</option>
+        <option>6:00 PM</option>
+        <option>9:00 PM</option>
+    </select><br><br>
+
+    <button type="submit">Book Ticket</button>
+</form>
+
+</body>
+</html>

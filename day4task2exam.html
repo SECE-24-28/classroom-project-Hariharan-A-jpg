@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Exam Registration Form</title>
+<script>
+function validateExamForm() {
+    let name = document.getElementById("name").value;
+    let reg = document.getElementById("reg").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+
+    if (name === "" || reg === "" || email === "" || phone === "") {
+        alert("All fields are mandatory.");
+        return false;
+    }
+
+    if (reg.length != 6) {
+        alert("Register number must be exactly 6 digits.");
+        return false;
+    }
+
+    if (phone.length != 10 || isNaN(phone)) {
+        alert("Phone must be 10 digits.");
+        return false;
+    }
+
+    let emailPattern = /\S+@\S+\.\S+/;
+    if (!emailPattern.test(email)) {
+        alert("Enter a valid email ID.");
+        return false;
+    }
+
+    if (name.length < 3) {
+        alert("Name must have at least 3 characters.");
+        return false;
+    }
+
+    alert("Exam Registration Successful!");
+    return true;
+}
+</script>
+</head>
+
+<body>
+<h2>Exam Registration Form</h2>
+
+<form onsubmit="return validateExamForm()">
+    Full Name: <input type="text" id="name"><br><br>
+    Register Number: <input type="text" id="reg"><br><br>
+    Email: <input type="text" id="email"><br><br>
+    Phone: <input type="text" id="phone"><br><br>
+    Department:
+    <select id="dept">
+        <option>CSE</option>
+        <option>ECE</option>
+        <option>EEE</option>
+        <option>MECH</option>
+    </select><br><br>
+    Year:
+    <select id="year">
+        <option>I</option>
+        <option>II</option>
+        <option>III</option>
+        <option>IV</option>
+    </select><br><br>
+    Exam Type:
+    <select id="type">
+        <option>Internal</option>
+        <option>Model</option>
+        <option>Semester</option>
+    </select><br><br>
+    Exam Date: <input type="date" id="date"><br><br>
+
+    <button type="submit">Register</button>
+</form>
+
+</body>
+</html>

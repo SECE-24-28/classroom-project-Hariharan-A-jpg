@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Railway Ticket Form</title>
+<script>
+function validateRailForm() {
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+    let train = document.getElementById("train").value;
+    let date = document.getElementById("date").value;
+    let phone = document.getElementById("phone").value;
+
+    if (name === "" || age === "" || train === "" || date === "") {
+        alert("All fields are required!");
+        return false;
+    }
+
+    
+    if (name.length < 3) {
+        alert("Name must have at least 3 characters.");
+        return false;
+    }
+
+
+    if (isNaN(age) || age <= 0) {
+        alert("Enter a valid age.");
+        return false;
+    }
+
+ 
+    if (phone.length != 10 || isNaN(phone)) {
+        alert("Phone must be exactly 10 digits.");
+        return false;
+    }
+
+  
+    if (date === "") {
+        alert("Please select a travel date.");
+        return false;
+    }
+
+    alert("Railway Ticket Booked Successfully!");
+    return true;
+}
+</script>
+</head>
+
+<body>
+<h2>Railway Ticket Reservation Form</h2>
+
+<form onsubmit="return validateRailForm()">
+    Name: <input type="text" id="name"><br><br>
+    Age: <input type="text" id="age"><br><br>
+    Phone: <input type="text" id="phone"><br><br>
+    Train Name: <input type="text" id="train"><br><br>
+    Train Number: <input type="text" id="trainno"><br><br>
+    Class:
+    <select id="class">
+        <option>SL</option>
+        <option>3AC</option>
+        <option>2AC</option>
+        <option>1AC</option>
+    </select><br><br>
+    Date of Journey: <input type="date" id="date"><br><br>
+    Boarding Station: <input type="text" id="board"><br><br>
+
+    <button type="submit">Book Ticket</button>
+</form>
+
+</body>
+</html>

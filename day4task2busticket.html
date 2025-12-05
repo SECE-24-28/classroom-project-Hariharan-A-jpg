@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bus Ticket Booking</title>
+<script>
+function validateBusForm() {
+    let name = document.getElementById("name").value;
+    let from = document.getElementById("from").value;
+    let to = document.getElementById("to").value;
+    let seats = document.getElementById("seats").value;
+    let phone = document.getElementById("phone").value;
+
+    if (name === "" || from === "" || to === "" || seats === "") {
+        alert("All fields are mandatory!");
+        return false;
+    }
+
+    if (name.length < 3) {
+        alert("Name must be at least 3 characters.");
+        return false;
+    }
+
+    if (isNaN(seats) || seats <= 0) {
+        alert("Seat count must be a valid number.");
+        return false;
+    }
+
+    if (phone.length != 10 || isNaN(phone)) {
+        alert("Phone number must be 10 digits.");
+        return false;
+    }
+
+    if (from === to) {
+        alert("From and To locations cannot be same.");
+        return false;
+    }
+
+    alert("Bus Ticket Booked Successfully!");
+    return true;
+}
+</script>
+</head>
+
+<body>
+<h2>Bus Ticket Booking Form</h2>
+
+<form onsubmit="return validateBusForm()">
+    Full Name: <input type="text" id="name"><br><br>
+    Phone: <input type="text" id="phone"><br><br>
+    From: <input type="text" id="from"><br><br>
+    To: <input type="text" id="to"><br><br>
+    Number of Seats: <input type="text" id="seats"><br><br>
+    Journey Date: <input type="date" id="date"><br><br>
+    Bus Type:
+    <select id="type">
+        <option>AC</option>
+        <option>Non-AC</option>
+        <option>Sleeper</option>
+        <option>Seater</option>
+    </select><br><br>
+    Boarding Point: <input type="text" id="board"><br><br>
+
+    <button type="submit">Book Ticket</button>
+</form>
+
+</body>
+</html>
